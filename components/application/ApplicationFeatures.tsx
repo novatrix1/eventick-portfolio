@@ -83,29 +83,29 @@ const ApplicationFeatures = ({ participantFeatures, organizerFeatures }: Applica
                 </div>
             </section>
 
-            <section className="py-8 bg-gray-900/80 backdrop-blur-sm border-b border-gray-700/50 sticky top-16 z-40 shadow-2xl">
-                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <section className="py-6 bg-gray-900/80 backdrop-blur-sm border-b border-gray-700/50 sticky top-16 z-40 shadow-2xl">
+                <div className="container mx-auto px-4 sm:px-6">
                     <div className="flex justify-center">
-                        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-2 flex border border-gray-700/50">
+                        <div className="bg-gray-800/50 backdrop-blur-sm rounded-2xl p-1 flex border border-gray-700/50 w-full max-w-md">
                             <button
                                 onClick={() => setActiveTab('participants')}
-                                className={`group px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center space-x-3 ${activeTab === 'participants'
-                                        ? 'bg-linear-to-r from-[#e87428] to-[#ff9a3d] text-white shadow-lg'
-                                        : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                                className={`group flex-1 px-4 py-3 md:px-6 md:py-4 rounded-xl font-semibold text-sm md:text-lg transition-all duration-300 flex items-center justify-center space-x-2 ${activeTab === 'participants'
+                                    ? 'bg-linear-to-r from-[#e87428] to-[#ff9a3d] text-white shadow-lg'
+                                    : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
                                     }`}
                             >
-                                <FaUserFriends className="w-5 h-5" />
-                                <span>Pour les Participants</span>
+                                <FaUserFriends className="w-4 h-4 md:w-5 md:h-5" />
+                                <span className="whitespace-nowrap">Participants</span>
                             </button>
                             <button
                                 onClick={() => setActiveTab('organisateurs')}
-                                className={`group px-8 py-4 rounded-xl font-semibold text-lg transition-all duration-300 flex items-center space-x-3 ${activeTab === 'organisateurs'
-                                        ? 'bg-linear-to-r from-[#e87428] to-[#ff9a3d] text-white shadow-lg'
-                                        : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
+                                className={`group flex-1 px-4 py-3 md:px-6 md:py-4 rounded-xl font-semibold text-sm md:text-lg transition-all duration-300 flex items-center justify-center space-x-2 ${activeTab === 'organisateurs'
+                                    ? 'bg-linear-to-r from-[#e87428] to-[#ff9a3d] text-white shadow-lg'
+                                    : 'text-gray-400 hover:text-white hover:bg-gray-700/50'
                                     }`}
                             >
-                                <FaUserTie className="w-5 h-5" />
-                                <span>Pour les Organisateurs</span>
+                                <FaUserTie className="w-4 h-4 md:w-5 md:h-5" />
+                                <span className="whitespace-nowrap">Organisateurs</span>
                             </button>
                         </div>
                     </div>
@@ -185,7 +185,7 @@ const ApplicationFeatures = ({ participantFeatures, organizerFeatures }: Applica
                                                 src={feature.image}
                                                 alt={`${feature.title} - Eventick`}
                                                 fill
-                                                className="object-contain rounded-3xl shadow-2xl" 
+                                                className="object-contain rounded-3xl shadow-2xl"
                                                 priority={index === 0}
                                             />
                                         </div>
@@ -229,7 +229,7 @@ const ApplicationFeatures = ({ participantFeatures, organizerFeatures }: Applica
                                 </Link>
                             </div>
 
-                          
+
                         </div>
                     </div>
                 </div>
