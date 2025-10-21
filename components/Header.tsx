@@ -10,7 +10,6 @@ const Header = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const pathname = usePathname();
 
-    // Effet pour détecter le scroll
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 20);
@@ -33,10 +32,8 @@ const Header = () => {
                 ? 'bg-gray-900/95 backdrop-blur-md shadow-2xl border-b border-gray-700/50' 
                 : 'bg-transparent'
         }`}>
-            {/* Barre de navigation principale */}
             <nav className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between items-center h-16 lg:h-20">
-                    {/* Logo */}
                     <Link 
                         href="/" 
                         className="flex items-center space-x-3 group"
@@ -51,12 +48,10 @@ const Header = () => {
                                 className="object-contain transition-transform duration-300 group-hover:scale-110"
                                 priority
                             />
-                            {/* Effet de lueur sur le logo */}
-                            <div className="absolute inset-0 bg-gradient-to-r from-[#e87428] to-[#ff9a3d] rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300 -z-10"></div>
+                            <div className="absolute inset-0 bg-linear-to-r from-[#e87428] to-[#ff9a3d] rounded-full opacity-0 group-hover:opacity-20 blur-md transition-opacity duration-300 -z-10"></div>
                         </div>
                     </Link>
 
-                    {/* Navigation Desktop */}
                     <div className="hidden lg:flex items-center space-x-1">
                         {navItems.map((item) => (
                             <Link
@@ -64,34 +59,30 @@ const Header = () => {
                                 href={item.href}
                                 className={`relative px-6 py-3 rounded-2xl text-sm font-semibold transition-all duration-300 group ${
                                     isActive(item.href)
-                                        ? 'text-white bg-gradient-to-r from-[#e87428] to-[#ff9a3d] shadow-lg shadow-[#e87428]/25'
+                                        ? 'text-white bg-linear-to-r from-[#e87428] to-[#ff9a3d] shadow-lg shadow-[#e87428]/25'
                                         : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                                 }`}
                             >
                                 <span className="relative z-10">{item.name}</span>
                                 
-                                {/* Effet de bordure animée pour les liens actifs */}
                                 {isActive(item.href) && (
-                                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#e87428] to-[#ff9a3d] opacity-75 blur-sm -z-10"></div>
+                                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#e87428] to-[#ff9a3d] opacity-75 blur-sm -z-10"></div>
                                 )}
                                 
-                                {/* Effet de hover pour les liens inactifs */}
                                 {!isActive(item.href) && (
-                                    <div className="absolute inset-0 rounded-2xl bg-gradient-to-r from-[#e87428] to-[#ff9a3d] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
+                                    <div className="absolute inset-0 rounded-2xl bg-linear-to-r from-[#e87428] to-[#ff9a3d] opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"></div>
                                 )}
                             </Link>
                         ))}
                     </div>
 
-                    {/* Boutons CTA Desktop */}
                     <div className="hidden lg:flex items-center space-x-3">
-                        <button className="group relative px-6 py-3 text-sm font-semibold text-white bg-gradient-to-r from-[#e87428] to-[#ff9a3d] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
-                            <div className="absolute inset-0 bg-gradient-to-r from-white/20 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
+                        <button className="group relative px-6 py-3 text-sm font-semibold text-white bg-linear-to-r from-[#e87428] to-[#ff9a3d] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 overflow-hidden">
+                            <div className="absolute inset-0 bg-linear-to-r from-white/20 to-transparent translate-x-full group-hover:translate-x-full transition-transform duration-1000"></div>
                             <span className="relative z-10">Télécharger</span>
                         </button>
                     </div>
 
-                    {/* Menu Mobile Button */}
                     <button
                         className="lg:hidden p-3 rounded-2xl text-gray-300 hover:text-white hover:bg-gray-800/50 transition-all duration-300"
                         onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -111,7 +102,6 @@ const Header = () => {
                     </button>
                 </div>
 
-                {/* Menu Mobile */}
                 <div className={`lg:hidden transition-all duration-300 overflow-hidden ${
                     isMenuOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
                 }`}>
@@ -123,7 +113,7 @@ const Header = () => {
                                     href={item.href}
                                     className={`block px-4 py-4 rounded-2xl text-base font-semibold transition-all duration-300 ${
                                         isActive(item.href)
-                                            ? 'text-white bg-gradient-to-r from-[#e87428] to-[#ff9a3d] shadow-lg'
+                                            ? 'text-white bg-linear-to-r from-[#e87428] to-[#ff9a3d] shadow-lg'
                                             : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                                     }`}
                                     onClick={() => setIsMenuOpen(false)}
@@ -135,10 +125,10 @@ const Header = () => {
                             {/* Boutons CTA Mobile */}
                             <div className="pt-4 mt-4 border-t border-gray-700/50 space-y-3">
                                 <button 
-                                    className="w-full px-4 py-4 text-base font-semibold text-white bg-gradient-to-r from-[#e87428] to-[#ff9a3d] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
+                                    className="w-full px-4 py-4 text-base font-semibold text-white bg-linear-to-r from-[#e87428] to-[#ff9a3d] rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 text-center"
                                     onClick={() => setIsMenuOpen(false)}
                                 >
-                                    Télécharger l'application
+                                    {"Télécharger l'application"}
                                 </button>
                             </div>
                         </div>
@@ -146,8 +136,7 @@ const Header = () => {
                 </div>
             </nav>
 
-            {/* Élément décoratif en bas du header */}
-            <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-[#e87428] to-transparent opacity-50"></div>
+            <div className="absolute bottom-0 left-0 right-0 h-px bg-linear-to-r from-transparent via-[#e87428] to-transparent opacity-50"></div>
         </header>
     );
 };
