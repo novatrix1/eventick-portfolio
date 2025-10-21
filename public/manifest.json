@@ -1,0 +1,10 @@
+{
+  "name": "Eventick",
+  "short_name": "Eventick",
+  "description": "Réservez et gérez vos billets d'événements en Mauritanie facilement avec Eventick.",
+  "lang": "fr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary"
+}

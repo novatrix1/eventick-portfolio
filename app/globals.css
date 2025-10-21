@@ -1,26 +1,123 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* === PALETTE NÉON TEAL MODERNISÉE === */
+  --neon-teal: #1a9a9b; /* 🎯 Couleur principale */
+  --neon-cyan: #03eeff;
+  --neon-blue: #2139fb;
+  --deep-midnight: #001f26;
+  --pure-white: #ffffff;
+
+  /* === COULEURS FONDAMENTALES === */
+  --background: var(--deep-midnight);
+  --foreground: var(--pure-white);
+  --accent: var(--neon-teal);
+
+  /* === MESH GRADIENTS === */
+  --mesh-gradient-1: radial-gradient(circle at 25% 35%, rgba(26, 154, 155, 0.35), transparent 40%),
+                     radial-gradient(circle at 75% 65%, rgba(3, 238, 255, 0.25), transparent 45%),
+                     linear-gradient(135deg, #001f26 0%, #000f12 100%);
+
+  --mesh-gradient-2: radial-gradient(circle at 10% 85%, rgba(26, 154, 155, 0.4), transparent 35%),
+                     radial-gradient(circle at 90% 15%, rgba(3, 238, 255, 0.3), transparent 40%),
+                     linear-gradient(45deg, #001822 0%, #001f26 100%);
 }
 
-@theme inline {
+.font-arabic {
+  font-family: 'Noto Naskh Arabic', serif;
+}
+
+@theme {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-accent: var(--accent);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* === FOND MESH GRADIENT ANIMÉ === */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--mesh-gradient-1);
+  z-index: -2;
+  opacity: 1;
+  animation: mesh-transition 25s infinite alternate ease-in-out;
 }
 
+/* === BASE DU BODY === */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Geist', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* === EFFET DE LUMIÈRE INTERACTIVE === */
+body::after {
+  content: "";
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: 
+    radial-gradient(circle at center, rgba(26, 154, 155, 0.07) 0%, transparent 70%),
+    radial-gradient(circle at 80% 20%, rgba(3, 238, 255, 0.04) 0%, transparent 80%);
+  z-index: -1;
+  opacity: 0.5;
+  animation: light-rotation 45s infinite linear;
+  pointer-events: none;
+}
+
+@keyframes mesh-transition {
+  0% { background: var(--mesh-gradient-1); }
+  100% { background: var(--mesh-gradient-2); }
+}
+
+@keyframes light-rotation {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* Ajoutez ces styles à votre global CSS */
+
+/* Animation de bounce personnalisée */
+@keyframes bounce-slow {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 3s infinite;
+}
+
+/* Ombres personnalisées */
+.shadow-3xl {
+  box-shadow: 0 25px 50px -12px rgba(232, 116, 40, 0.25);
+}
+
+.hover\:shadow-3xl:hover {
+  box-shadow: 0 25px 50px -12px rgba(232, 116, 40, 0.4);
+}
+
+/* Effets de glassmorphism */
+.backdrop-blur-sm {
+  backdrop-filter: blur(8px);
+}
+
+/* Transition pour les transformations */
+.transform {
+  transition-property: transform;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 300ms;
 }
