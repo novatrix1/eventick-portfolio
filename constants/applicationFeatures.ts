@@ -1,17 +1,6 @@
-import { IconType } from 'react-icons';
-import { 
-  FaSearch, 
-  FaCreditCard, 
-  FaTicketAlt, 
-  FaBell, 
-  FaChartLine, 
-  FaChartBar, 
-  FaMobileAlt, 
-  FaUserFriends 
-} from 'react-icons/fa';
 
 export interface Feature {
-  icon: IconType; 
+  icon: string; 
   title: string;
   description: string;
   details: string[];
@@ -20,7 +9,7 @@ export interface Feature {
 
 export const participantFeatures: Feature[] = [
   {
-    icon: FaSearch,
+    icon: 'FaSearch',
     title: 'Découverte',
     description: 'Parcourez tous les événements près de chez vous avec filtres intelligents',
     details: [
@@ -32,7 +21,7 @@ export const participantFeatures: Feature[] = [
     image: '/images/Decouverte.png' 
   },
   {
-    icon: FaCreditCard,
+    icon: 'FaCreditCard',
     title: 'Paiement',
     description: 'Payez facilement avec les Mobile Banking',
     details: [
@@ -43,7 +32,7 @@ export const participantFeatures: Feature[] = [
     image: '/images/Paiement.png' 
   },
   {
-    icon: FaTicketAlt,
+    icon: 'FaTicketAlt',
     title: 'Billets digitaux',
     description: 'Recevez votre QR code unique directement dans l\'app',
     details: [
@@ -55,7 +44,7 @@ export const participantFeatures: Feature[] = [
     image: '/images/Billets.png' 
   },
   {
-    icon: FaBell,
+    icon: 'FaBell',
     title: 'Rappels',
     description: 'Notifications push pour ne rien manquer',
     details: [
@@ -69,7 +58,7 @@ export const participantFeatures: Feature[] = [
 
 export const organizerFeatures: Feature[] = [
   {
-    icon: FaChartLine,
+    icon: 'FaChartLine',
     title: 'Dashboard',
     description: 'Créez et suivez vos événements en temps réel',
     details: [
@@ -81,7 +70,7 @@ export const organizerFeatures: Feature[] = [
     image: '/images/Dashboard.png'
   },
   {
-    icon: FaChartBar,
+    icon: 'FaChartBar',
     title: 'Analytics',
     description: 'Ventes, revenus, taux de conversion en direct',
     details: [
@@ -92,7 +81,7 @@ export const organizerFeatures: Feature[] = [
     image: '/images/Analytics.png' 
   },
   {
-    icon: FaMobileAlt,
+    icon: 'FaMobileAlt',
     title: 'Scanner',
     description: 'Validez les entrées avec le scan QR code',
     details: [
@@ -103,7 +92,7 @@ export const organizerFeatures: Feature[] = [
     image: '/images/Scanner.png' 
   },
   {
-    icon: FaUserFriends,
+    icon: 'FaUserFriends',
     title: 'Validation',
     description: 'Devenez organisateur certifié',
     details: [
