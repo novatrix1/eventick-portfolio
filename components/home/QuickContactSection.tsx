@@ -58,7 +58,6 @@ const QuickContactSection = () => {
         setSubmitStatus('error');
       }
     } catch  {
-      //console.error('Erreur:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
