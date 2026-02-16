@@ -68,7 +68,7 @@ export default function PrivacyPolicy() {
                     {/* Footer / Back */}
                     <div className="text-center pt-8">
                         <Link href="/" className="inline-block px-6 py-3 rounded-2xl bg-linear-to-r from-[#e87428] to-[#ff9a3d] font-semibold shadow-xl hover:scale-105 transform transition-all duration-300">
-                            Retour à l'accueil
+                            {"Retour à l'accueil"}
                         </Link>
                     </div>
                 </div>
