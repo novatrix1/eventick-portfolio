@@ -13,14 +13,18 @@ import {
   FaLinkedin,
   FaGlobe,
   FaClock,
+  FaPhone,
+  FaEnvelope,
   FaBuilding,
+  FaMapMarkerAlt,
   FaIdCard,
   FaImage,
   FaTrash,
   FaArrowRight,
+  FaDownload,
 } from 'react-icons/fa';
 
-// Constantes
+// Constantes pour les catégories et types
 const CATEGORIES = [
   'Concerts',
   'Festivals',
@@ -154,7 +158,7 @@ export default function BecomeOrganizerPage() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    // Validation
+    // Validation simple
     if (!formData.companyName || !formData.phone || !formData.contactEmail || !idFrontFile || !idBackFile) {
       setErrorMessage('Veuillez remplir tous les champs obligatoires et ajouter les deux faces de votre pièce d’identité.');
       setSubmitStatus('error');
@@ -177,9 +181,20 @@ export default function BecomeOrganizerPage() {
     submitData.append('idBack', idBackFile);
 
     try {
-      // Envoi sans token (le backend doit être adapté pour ne pas exiger d'authentification)
+      // Récupérer le token d'authentification (à adapter selon votre système)
+      const token = localStorage.getItem('token'); // ou utilisez un contexte
+      if (!token) {
+        setErrorMessage('Vous devez être connecté pour effectuer cette action.');
+        setSubmitStatus('error');
+        setIsSubmitting(false);
+        return;
+      }
+
       const response = await fetch('https://eventick.onrender.com/api/organizers/register', {
         method: 'POST',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
         body: submitData,
       });
 
@@ -187,7 +202,7 @@ export default function BecomeOrganizerPage() {
 
       if (response.ok) {
         setSubmitStatus('success');
-        // Réinitialisation
+        // Réinitialiser le formulaire (optionnel)
         setFormData({
           companyName: '',
           address: '',
@@ -212,13 +227,14 @@ export default function BecomeOrganizerPage() {
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
+      // Cache le message d'erreur après 5 secondes
       setTimeout(() => {
         if (submitStatus === 'error') setSubmitStatus('idle');
       }, 5000);
     }
   };
 
-  // Composant de redirection vers l'application
+  // Composant pour la redirection vers l'application
   const AppRedirectButtons = () => {
     const [appOpened, setAppOpened] = useState(false);
 
@@ -325,7 +341,7 @@ export default function BecomeOrganizerPage() {
                     <div>
                       <p className="text-green-400 font-medium text-lg">Inscription réussie !</p>
                       <p className="text-green-300">
-                        Votre demande est en attente de vérification. Vous recevrez une notification {"dès qu'elle sera approuvée."}
+                       {" Votre demande est en attente de vérification. Vous recevrez une notification dès qu'elle sera approuvée."}
                       </p>
                     </div>
                   </div>
@@ -471,7 +487,7 @@ export default function BecomeOrganizerPage() {
 
                   <div>
                     <label htmlFor="businessHours" className="block text-sm font-medium text-gray-300 mb-2">
-                      {"Horaires d'ouverture"}
+                     {" Horaires d'ouverture"}
                     </label>
                     <textarea
                       id="businessHours"
