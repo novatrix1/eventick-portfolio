@@ -58,25 +58,18 @@ export default function EventPage() {
     if (!id || appOpened || !isMobile()) return;
     setAppOpened(true);
 
-    // Tente le scheme custom eventick://
-    const deepLink = `eventick://events/${id}`;
+    const deepLink = `eventick://event/${id}`;
     window.location.href = deepLink;
-
-    // Les Universal Links / App Links se déclenchent automatiquement
-    // via les fichiers .well-known si l'app est installée — pas besoin de JS
   }, [id, appOpened]);
 
   const handleOpenApp = () => {
     if (isMobile()) {
-      // Tente d'ouvrir l'app
-      window.location.href = `eventick://events/${id}`;
-      // Fallback store après 2.5s si l'app n'est pas installée
+      window.location.href = `eventick://event/${id}`;
       setTimeout(() => {
         if (isIOS()) window.open(IOS_STORE, "_blank");
         else window.open(ANDROID_STORE, "_blank");
       }, 2500);
     } else {
-      // Desktop : ouvre les deux stores
       window.open(IOS_STORE, "_blank");
     }
   };
@@ -113,7 +106,7 @@ export default function EventPage() {
           <meta name="twitter:card" content="summary_large_image" />
           <meta
             name="apple-itunes-app"
-            content={`app-id=6758682794, app-argument=eventick://events/${id}`}
+            content={`app-id=6758682794, app-argument=eventick://event/${id}`}
           />
         </Head>
       )}
@@ -286,15 +279,14 @@ export default function EventPage() {
           </div>
         </div>
 
-        {/* CTA principal */}
+        {/* CTA principal : icône réelle Eventick + texte */}
         <button
           onClick={handleOpenApp}
           style={{
             width: "100%",
             maxWidth: 400,
-            background: "linear-gradient(135deg, #ec673b, #d4522a)",
-            color: "white",
-            border: "none",
+            background: "transparent", // arrière-plan supprimé
+            border: "1px solid rgba(255,255,255,0.2)",
             borderRadius: 18,
             padding: "18px 24px",
             fontSize: 16,
@@ -304,15 +296,24 @@ export default function EventPage() {
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
-            gap: 10,
-            boxShadow: "0 8px 32px rgba(236,103,59,0.3)",
+            gap: 12,
+            color: "white",
+            transition: "background 0.2s",
           }}
+          onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+          onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
         >
-          <span style={{ fontSize: 20 }}>📲</span>
+          <Image
+            src="/eventick-icon.svg"  // Remplacez par le chemin réel de votre icône Eventick
+            alt="Eventick"
+            width={24}
+            height={24}
+            style={{ filter: "brightness(0) invert(1)" }} // rend l'icône blanche
+          />
           {isMobile() ? "Ouvrir dans Eventick" : "Télécharger Eventick"}
         </button>
 
-        {/* Stores séparés */}
+        {/* Boutons stores avec icônes officielles et fond transparent */}
         <div
           style={{
             display: "flex",
@@ -328,8 +329,8 @@ export default function EventPage() {
             rel="noreferrer"
             style={{
               flex: 1,
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: 14,
               padding: "12px 0",
               textAlign: "center",
@@ -337,10 +338,23 @@ export default function EventPage() {
               fontSize: 13,
               fontWeight: 600,
               textDecoration: "none",
-              display: "block",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              transition: "background 0.2s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
-            🍎 App Store
+            <Image
+              src="/apple-icon.svg"   // Remplacez par le chemin de votre icône Apple
+              alt="App Store"
+              width={20}
+              height={20}
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+            App Store
           </a>
           <a
             href={ANDROID_STORE}
@@ -348,8 +362,8 @@ export default function EventPage() {
             rel="noreferrer"
             style={{
               flex: 1,
-              background: "rgba(255,255,255,0.06)",
-              border: "1px solid rgba(255,255,255,0.1)",
+              background: "transparent",
+              border: "1px solid rgba(255,255,255,0.2)",
               borderRadius: 14,
               padding: "12px 0",
               textAlign: "center",
@@ -357,24 +371,27 @@ export default function EventPage() {
               fontSize: 13,
               fontWeight: 600,
               textDecoration: "none",
-              display: "block",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: 8,
+              transition: "background 0.2s",
             }}
+            onMouseEnter={(e) => (e.currentTarget.style.background = "rgba(255,255,255,0.05)")}
+            onMouseLeave={(e) => (e.currentTarget.style.background = "transparent")}
           >
-            🤖 Google Play
+            <Image
+              src="/google-play-icon.svg"  // Remplacez par le chemin de votre icône Google Play
+              alt="Google Play"
+              width={20}
+              height={20}
+              style={{ filter: "brightness(0) invert(1)" }}
+            />
+            Google Play
           </a>
         </div>
 
-        <p
-          style={{
-            color: "rgba(255,255,255,0.25)",
-            fontSize: 12,
-            textAlign: "center",
-            maxWidth: 300,
-            lineHeight: 1.6,
-          }}
-        >
-          Si Eventick est déjà installé,{" il s'ouvrira automatiquement."}
-        </p>
+        
       </main>
     </>
   );
