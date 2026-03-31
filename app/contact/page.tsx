@@ -105,7 +105,7 @@ const ContactPage = () => {
                         <div className={`lg:col-span-1 space-y-8 transition-all duration-700 ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}`}>
                             <div>
                                 <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                                    Nos coordonnées
+                                    Nos coordonnéesfsf
                                 </h2>
                                 <p className="text-gray-300">
                                     Plusieurs moyens de nous contacter. Choisissez celui qui vous convient le mieux.
