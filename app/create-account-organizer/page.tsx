@@ -420,7 +420,7 @@ export default function BecomeOrganizerPage() {
               Organisez des événements <span className="text-[#e87428]">inoubliables</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-              Rejoignez notre plateforme et créez, gérez et promouvez vos événements auprès de milliers de participants.
+              Rejoignez notre plateforme et créez, gérez et promouvez vos événements.
             </p>
           </div>
         </div>
