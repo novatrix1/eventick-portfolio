@@ -1,3 +1,5 @@
+//app/.well-known/apple-app-site-association/route.ts
+
 import { NextResponse } from "next/server";
 
 export async function GET() {
