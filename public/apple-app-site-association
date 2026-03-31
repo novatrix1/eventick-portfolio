@@ -1,0 +1,11 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "df5f7862.com.novatrix.eventick",
+        "paths": ["/events/*"]
+      }
+    ]
+  }
+}
